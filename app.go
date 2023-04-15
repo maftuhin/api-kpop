@@ -3,8 +3,6 @@ package main
 import (
 	"database/sql"
 	"log"
-	"maftuhin/kpop-api/database"
-	"maftuhin/kpop-api/routes"
 
 	"github.com/goccy/go-json"
 	"github.com/gofiber/fiber/v2"
@@ -33,12 +31,15 @@ func main() {
 		JSONEncoder: json.Marshal,
 		JSONDecoder: json.Unmarshal,
 	})
-	database.DBConn = initDatabase()
+	// database.DBConn = initDatabase()
 
 	app.Use(logger.New())
 	app.Use(cors.New(cors.ConfigDefault))
+	app.Get("/", func(c *fiber.Ctx) error {
+		return c.SendString("Hello")
+	})
 	// app.Use(ApiKey())
-	routes.SetUpRoutes(app)
+	// routes.SetUpRoutes(app)
 	log.Fatal(app.Listen(":8000"))
 }
 
