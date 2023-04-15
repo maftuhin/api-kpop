@@ -3,6 +3,8 @@ package main
 import (
 	"database/sql"
 	"log"
+	"maftuhin/kpop-api/database"
+	"maftuhin/kpop-api/routes"
 
 	"github.com/goccy/go-json"
 	"github.com/gofiber/fiber/v2"
@@ -13,8 +15,9 @@ import (
 )
 
 func initDatabase() *gorm.DB {
-	// sqlDB, _ := sql.Open("mysql", "remote:8Belas0694@tcp(limaefdua.com:3306)/kpop")
-	sqlDB, _ := sql.Open("mysql", "root:118806@tcp(127.0.0.1:3306)/kpop")
+	sqlDB, _ := sql.Open("mysql", "root:8Belas0694s$@tcp(localhost:3306)/kpop")
+	// sqlDB, _ := sql.Open("mysql", "maftuhin:8Belas0694s$@tcp(141.136.47.205:3306)/kpop")
+	// sqlDB, _ := sql.Open("mysql", "root:118806@tcp(127.0.0.1:3306)/kpop")
 	gormDB, err := gorm.Open(mysql.New(mysql.Config{
 		Conn: sqlDB,
 	}), &gorm.Config{
@@ -31,15 +34,12 @@ func main() {
 		JSONEncoder: json.Marshal,
 		JSONDecoder: json.Unmarshal,
 	})
-	// database.DBConn = initDatabase()
+	database.DBConn = initDatabase()
 
 	app.Use(logger.New())
 	app.Use(cors.New(cors.ConfigDefault))
-	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Hello")
-	})
 	// app.Use(ApiKey())
-	// routes.SetUpRoutes(app)
+	routes.SetUpRoutes(app)
 	log.Fatal(app.Listen(":8000"))
 }
 
