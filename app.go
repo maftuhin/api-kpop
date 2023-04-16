@@ -15,8 +15,8 @@ import (
 )
 
 func initDatabase() *gorm.DB {
-	sqlDB, _ := sql.Open("mysql", "root:8Belas0694s$@tcp(localhost:3306)/kpop")
-	// sqlDB, _ := sql.Open("mysql", "maftuhin:8Belas0694s$@tcp(141.136.47.205:3306)/kpop")
+	// sqlDB, _ := sql.Open("mysql", "root:8Belas0694s$@tcp(localhost:3306)/kpop")
+	sqlDB, _ := sql.Open("mysql", "maftuhin:8Belas0694s$@tcp(141.136.47.205:3306)/kpop")
 	// sqlDB, _ := sql.Open("mysql", "root:118806@tcp(127.0.0.1:3306)/kpop")
 	gormDB, err := gorm.Open(mysql.New(mysql.Config{
 		Conn: sqlDB,
