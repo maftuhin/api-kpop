@@ -28,7 +28,7 @@ func SongDetail(c *fiber.Ctx) error {
 	db := database.DBConn
 	id := c.Params("id")
 	var song []models.Song
-	db.Raw("SELECT uid, title, language, lyric, artists.name as artist FROM songs JOIN artists ON artists.code=songs.artist WHERE uid=? LIMIT 10", id).Scan(&song)
+	db.Raw("SELECT songs.id, uid, title, language, lyric, artists.name as artist FROM songs JOIN artists ON artists.code=songs.artist WHERE uid=? LIMIT 10", id).Scan(&song)
 	return c.JSON(song)
 }
 
