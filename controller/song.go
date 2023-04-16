@@ -64,7 +64,7 @@ func MostVisited(c *fiber.Ctx) error {
 	db := database.DBConn
 
 	var song []models.Song
-	db.Raw("SELECT title, uid, language, view, artists.name as artist FROM songs JOIN artists ON artists.code = songs.artist ORDER BY view DESC LIMIT 5").Scan(&song)
+	db.Raw("SELECT title, uid, language, view, artists.name as artist FROM songs JOIN artists ON artists.code = songs.artist ORDER BY view DESC LIMIT 10").Scan(&song)
 	return c.JSON(song)
 }
 
