@@ -29,6 +29,8 @@ func SetUpRoutes(app *fiber.App) {
 	app.Get("song", controller.SearchSong)
 	app.Get("song/artist/:code", controller.SongByCode)
 	app.Get("song/latest", controller.LastUpdate)
+	app.Get("song/most-visited", controller.MostVisited)
+	app.Get("song/counter/:id", controller.Counter)
 	app.Get("song/:id", controller.SongDetail)
 
 	// Artist
