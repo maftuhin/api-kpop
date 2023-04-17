@@ -7,12 +7,12 @@ import (
 )
 
 type Paginator struct {
-	TotalRecord int64       `json:"total_record"`
-	TotalPage   int         `json:"total_page"`
+	TotalRecord int64       `json:"totalRecord"`
+	TotalPage   int         `json:"totalPage"`
 	Records     interface{} `json:"records"`
 	Page        int         `json:"page"`
-	PrevPage    int         `json:"prev_page"`
-	NextPage    int         `json:"next_page"`
+	PrevPage    int         `json:"prevPage"`
+	NextPage    int         `json:"nextPage"`
 }
 type Param struct {
 	DB      *gorm.DB
