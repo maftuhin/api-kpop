@@ -9,7 +9,6 @@ import (
 	"github.com/goccy/go-json"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
-	"github.com/gofiber/fiber/v2/middleware/logger"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -36,7 +35,7 @@ func main() {
 	})
 	database.DBConn = initDatabase()
 
-	app.Use(logger.New())
+	// app.Use(logger.New())
 	app.Use(cors.New(cors.ConfigDefault))
 	// app.Use(ApiKey())
 	routes.SetUpRoutes(app)
