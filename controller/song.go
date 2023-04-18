@@ -40,7 +40,7 @@ func SongByCode(c *fiber.Ctx) error {
 	var song []models.Lyric
 	sql := db.Table("songs").
 		Select("uid, title, language").
-		Where("artist=?", code).
+		Where("artist=? AND language=?", code, "original").
 		Order("title ASC")
 
 	paginator := paging.Paging(&paging.Param{
