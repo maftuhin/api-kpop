@@ -10,6 +10,9 @@ func SetUpRoutes(app *fiber.App) {
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.SendString("KPOP APP")
 	})
+	app.Get("app-ads.txt", func(c *fiber.Ctx) error {
+		return c.SendString("google.com, pub-9691140516799861, DIRECT, f08c47fec0942fa0")
+	})
 	// app.Get("update/artist", controller.UpdateArtist)
 	// app.Get("update/song", controller.UpdateSong)
 	// app.Post("update/track", controller.UpdateSoundTrack)
