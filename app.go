@@ -39,7 +39,7 @@ func main() {
 	app.Use(cors.New(cors.ConfigDefault))
 	// app.Use(ApiKey())
 	routes.SetUpRoutes(app)
-	log.Fatal(app.Listen(":80"))
+	log.Fatal(app.Listen(":8000"))
 }
 
 func ApiKey() fiber.Handler {
