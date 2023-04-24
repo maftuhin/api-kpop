@@ -55,7 +55,7 @@ func LastUpdate(c *fiber.Ctx) error {
 	db := database.DBConn
 
 	var song []models.Song
-	db.Raw("SELECT songs.id, title, uid, language, artists.name as artist FROM songs JOIN artists ON artists.code = songs.artist ORDER BY songs.id DESC LIMIT 5").
+	db.Raw("SELECT songs.id, title, uid, language, artists.name as artist FROM songs JOIN artists ON artists.code = songs.artist WHERE language='original' ORDER BY songs.id DESC LIMIT 7").
 		Scan(&song)
 	return c.JSON(song)
 }
