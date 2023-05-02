@@ -38,11 +38,11 @@ func UpdateSoundTrack(c *fiber.Ctx) error {
 	return c.JSON(tracks)
 }
 
-func UpdateLink(c *fiber.Ctx) error {
-	db := database.DBConn
-	id := c.FormValue("id")
+// func UpdateLink(c *fiber.Ctx) error {
+// 	db := database.DBConn
+// 	id := c.FormValue("id")
 
-	var links []models.Link
-	db.Where("id > ?", id).Find(&links)
-	return c.JSON(links)
-}
+// 	var links []models.Link
+// 	db.Where("id > ?", id).Find(&links)
+// 	return c.JSON(links)
+// }
