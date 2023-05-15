@@ -15,7 +15,7 @@ func SearchSong(c *fiber.Ctx) error {
 	query := c.Query("q")
 
 	var song []models.Song
-	sql := db.Select("uid, title,language, artists.name as artist").Joins("join artists ON artists.code=songs.artist").Where("language=? AND title LIKE ?", "original", "%"+query+"%").Order("title ASC")
+	sql := db.Select("uid, title,language, artists.name as artist, view").Joins("join artists ON artists.code=songs.artist").Where("language=? AND title LIKE ?", "original", "%"+query+"%").Order("title ASC")
 	paginator := paging.Paging(&paging.Param{
 		DB:    sql,
 		Limit: 10,
@@ -39,7 +39,7 @@ func SongByCode(c *fiber.Ctx) error {
 
 	var song []models.Lyric
 	sql := db.Table("songs").
-		Select("uid, title, language").
+		Select("uid, title, language, view").
 		Where("artist=? AND language=?", code, "original").
 		Order("title ASC")
 
