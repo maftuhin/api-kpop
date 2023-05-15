@@ -37,7 +37,7 @@ func SongByCode(c *fiber.Ctx) error {
 	db := database.DBConn
 	code := c.Params("code")
 
-	var song []models.Lyric
+	var song []models.Song
 	sql := db.Table("songs").
 		Select("uid, title, language, view").
 		Where("artist=? AND language=?", code, "original").
